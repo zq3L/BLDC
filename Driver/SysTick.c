@@ -27,20 +27,11 @@ void sysTickInit(void)
     SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8) ;
 }
 
-static u8 counter = 0 ;
 void sysTickItHandle(void)
 {
     mySystickCounter.flag |= SYSTICK_NEW_MS_FLAG ;
     if(++mySystickCounter.msCounter >= 1000)
     {
-        if(counter)
-        {
-            GPIO_SetBits(GPIOB, GPIO_Pin_9);
-            counter = 0 ;            
-        }else{
-            GPIO_ResetBits(GPIOB, GPIO_Pin_9);
-            counter = 1 ;
-        }
         mySystickCounter.flag |= SYSTICK_NEW_S_FLAG ;
         mySystickCounter.msCounter = 0 ;
         mySystickCounter.sCounter++ ;

@@ -13,6 +13,8 @@ extern C{
 
 #include "systick.h"
 #include "rcc.h"
+#include "led.h"
+#include "key.h"
 
 
 #ifdef __cplusplus

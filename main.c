@@ -9,30 +9,26 @@ Version		:1.0.0
 
 #include "stm32f10x.h"
 
-void gpioInit(void)
-{
-    GPIO_InitTypeDef GPIO_InitStruct ;
-    
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
-    
-    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_9 ;
-    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP ;
-    GPIO_InitStruct.GPIO_Speed = GPIO_Speed_2MHz ;
-    GPIO_Init(GPIOB, &GPIO_InitStruct);
-}
 
 int main(void)
 {
+    unsigned char i = 0 ;
     SystemInit();
     rccInit();
-    gpioInit();
+    ledInit();
+    keyInit();
     sysTickInit();
     while(1)
     {
-        systickDelay(1000);
-        GPIO_SetBits(GPIOB, GPIO_Pin_9);
-        systickDelay(1000);
-        GPIO_ResetBits(GPIOB, GPIO_Pin_9);
+        keyRun();
+        for(i=0;i<KeySum;i++)
+        {
+            if(KeyStateClick == keyGetState((KeyIndex)(KeyIndex0+i)))
+            {
+                ledGetState(0) == LedStateOff ? ledSetState(0, LedStateOn):ledSetState(0, LedStateOff);
+            }
+        }
+        systickDelay(20);
     }
 }
 
