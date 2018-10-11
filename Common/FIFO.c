@@ -64,3 +64,21 @@ Bool fifoRead(Fifo* pFifo,void* pItem)
 }
 
 
+Bool fifoPeek(Fifo * pFifo, void * pItem)
+{
+    unsigned char i = 0 ;
+    
+    if(0 == pFifo->usedSize)
+    {
+        return false ;
+    }
+    
+    for(i=0;i<pFifo->itemSize;i++)
+    {
+        *((char*)pItem+i)= *((char*)pFifo->pData+i);
+    }
+
+    return true ;   
+}
+
+

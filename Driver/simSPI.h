@@ -10,32 +10,68 @@ Version		:1.0.0
 #include "typedef.h"
 #include "gpio.h"
 
+/*
+----------------|        |--------|        |--------|        |--------|        |--------|        |--------
+                |        |        |        |        |        |        |        |        |        |
+                |--------|        |--------|        |--------|        |--------|        |--------|
+
+            
+----------\  /--------------\  /--------------\  /--------------\  /--------------\  /--------------\  /---
+           \/                \/                \/                \/                \/                \/
+           /\                /\                /\                /\                /\                /\
+----------/  \--------------/  \--------------/  \--------------/  \--------------/  \--------------/  \---
+
+
+-------------------\  /--------------\  /--------------\  /--------------\  /--------------\  /-----------
+                    \/                \/                \/                \/                \/
+                    /\                /\                /\                /\                /\
+-------------------/  \--------------/  \--------------/  \--------------/  \--------------/  \------------
+*/
+
 typedef enum
 {
-    SimSpiMode_MOSI = 0x01 ,
-    SimSpiMode_MISO = 0x02 ,
+    SimSpiMode2_edge = 0x00 ,
+    SimSpiMode1_edge = 0x01 ,
 }SimSpiMode ;
+
+typedef enum
+{
+    SimSpiDirection_MOSI = 0x01 ,
+    SimSpiDirection_MISO = 0x02 ,
+}SimSpiDirection ;
 
 typedef struct
 {
-    GPIO CS ;
     GPIO Clk ;
     GPIO MOSI ;
     GPIO MISO ;
+
+    SimSpiMode mode ;
+    SimSpiDirection direction ;
 }SimSpiInfo ;
+
+typedef enum
+{
+    SimSpiIndexNone = 0 ,
+    SimSpiIndex0,
+}SimSpiIndex ;
 
 typedef struct
 {
-    unsigned char index ;
-    SimSpiMode mode ;
-    SimSpiInfo* info ;
+    SimSpiIndex index ;
+    unsigned char delayTime ;
+    const SimSpiInfo* info ;
 }SimSpi ;
+
 
 #ifdef __cplusplus
 extern C{
 #endif
 
 void simSpiInit(void);
+Bool simSpiWrite(SimSpiIndex index, unsigned char data);
+Bool simSpiRead(SimSpiIndex index,unsigned char * pData);
+
 
 
 #ifdef __cplusplus

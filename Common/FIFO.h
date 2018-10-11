@@ -28,6 +28,8 @@ extern C{
 void fifoInit(Fifo* pFifo,void* pData,unsigned char size,unsigned char itemSize);
 Bool fifoWrite(Fifo* pFifo,void* pItem);
 Bool fifoRead(Fifo* pFifo,void* pItem);
+Bool fifoPeek(Fifo* pFifo,void* pItem);
+
 
 
 #ifdef __cplusplus
