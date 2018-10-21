@@ -11,10 +11,13 @@ Version		:1.0.0
 
 #define COUNTER_OF_ITEM(ARRAY_NAME,TYPE) (sizeof(ARRAY_NAME)/sizeof(TYPE))
 #define OFF_SET_OF(TYPE,ITEM) (((TYPE*)(void *)0)->(ITEM))
-    
+
+
 /*
-#define GET_ITEM_VALUE(pVALUE,TYPE,ITEM,ITEM_SIZE) (((unsigned long*)(pVALUE+OFF_SET_OF(TYPE, ITEM)))>>(sizeof(long) - ITEM_SIZE))
+#define CONTAINDER_OF(TYPE,ITEM,pItem,) ((TYPE*)((char*)pItem-(unsigned int)OFF_SET_OF(TYPE, ITEM)))
+#define GET_ITEM_VALUE(pVALUE,TYPE,ITEM,ITEM_SIZE) (((unsigned long*)(pVALUE+OFF_SET_OF(TYPE, ITEM)))>>(sizeof(long) - ITEM_SIZE))   
 */
+
 #ifdef __cplusplus
 extern C{
 #endif

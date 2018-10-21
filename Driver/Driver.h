@@ -1,20 +1,18 @@
 /*
 Decription	:
 Author		:Alan Zhang
-Date		:2018-10-07 00:11:34
+Date		:2018-10-21 08:18:48
 Version		:1.0.0
 */
-#ifndef _MAIN_H_
-#define _MAIN_H_
-
-#include "stm32f10x.h"
-#include "Driver.h"
-
-#include "nokia5110.h"
+#ifndef _DRIVER_H_
+#define _DRIVER_H_
 
 #ifdef __cplusplus
 extern C{
 #endif
+
+void driverInit(void);
+
 
 
 
