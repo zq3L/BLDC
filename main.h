@@ -10,6 +10,8 @@ Version		:1.0.0
 #include "stm32f10x.h"
 #include "Driver.h"
 
+#include "adc.h"
+
 #include "nokia5110.h"
 
 #ifdef __cplusplus

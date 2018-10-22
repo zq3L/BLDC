@@ -80,9 +80,9 @@ static void nokia5110RegInit(void)
     nokia5110WriteCommand(0x0c);
     
     nokia5110ClearScreen(0x00);
-    nokia5110Printf(0,0,"Alan Zhang",FontIndex_8x16);
-    nokia5110Printf(0,2,"BLDC Board",FontIndex_8x16);
-    nokia5110Printf(0,4,"Ver    1.0",FontIndex_8x16);
+    //nokia5110Printf(0,0,"Alan Zhang",FontIndex_8x16);
+    nokia5110Printf(0,1,"BLDC Board",FontIndex_8x16);
+    nokia5110Printf(0,3,"Ver  1.0.0",FontIndex_8x16);
 }
 
 

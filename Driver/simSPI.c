@@ -15,7 +15,7 @@ const SimSpiInfo simSpiInfos[] =
 
 SimSpi simSpis[] = 
 {
-    {SimSpiIndex0,1,simSpiInfos},
+    {SimSpiIndex0,5,simSpiInfos},
 };
 
 static void simSpiHardwareInit(void)
